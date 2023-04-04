@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/*LIKE LION 소개*/
+#wrapper {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content-header {
+  font-size: 2.5em;
+}
+.section-box {
+  width: 480px;
+  height: 600px;
+}
+
+.left-contents {
+  width: 100%;
+  height: 180px;
+  
+}
+
+#logo {
+  width: 150px;
+  height: 90px;
+}
+
+.img-box {
+  background-color: white;
+  flex-basis: 150px;
+  border-radius: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.color {
+  color: white;
+}
+
+/*로그인*/
+#right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  height: 30px;
+  border-radius: 30px;
+  background-color: #F28F38;
+  border: none;
+  padding-inline: 30px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 11px;
+  font-style: italic;
+  border: none;
+  border-radius: 15px;
+  padding-left: 20px;
+  background-color: white;
+  margin: 2%;
+}
