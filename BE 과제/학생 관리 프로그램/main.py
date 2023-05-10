@@ -119,7 +119,7 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
             grade = input("학점: ")
             student = Student(student_id, name, age, major, grade)
             manager.add_student(student)
-            print(f"< {name} 학생이 추가되었습니다.")
+            print(f"{name} 학생이 추가되었습니다.")
 
         elif command == 2:
             students = manager.list_student()
@@ -164,7 +164,7 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
                         grade = input("수정할 학점을 입력해주세요: ")
                         new_student = Student(new_student_id, name, age, major, grade)
                         manager.update_student(student_id, new_student)
-                        print(f"< {name} 학생 정보가 수정되었습니다. >")
+                        print(f"{name} 학생 정보가 수정되었습니다.")
                         break
                 else:
                     student_id = input("존재하지 않는 학번입니다. 수정할 학생의 학번을 다시 입력해주세요: ")
