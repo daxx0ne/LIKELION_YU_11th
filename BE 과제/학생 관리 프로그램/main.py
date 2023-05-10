@@ -132,12 +132,13 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
 
         elif command == 3:
             student_id = input("조회할 학생의 학번을 입력해주세요: ")
-            students = manager.search_student(student_id)
-            for student in students:
-                print(f"이름: {student.get_name()}")
-                print(f"나이: {student.get_age()}")
-                print(f"전공: {student.get_major()}")
-                print(f"학점: {student.get_grade()}")
+            if manager.search_student(student_id):
+                students = manager.search_student(student_id)
+                for student in students:
+                    print(f"이름: {student.get_name()}")
+                    print(f"나이: {student.get_age()}")
+                    print(f"전공: {student.get_major()}")
+                    print(f"학점: {student.get_grade()}")
             else:
                 print("해당 학번을 가진 학생은 존재하지 않습니다")
 
@@ -152,8 +153,8 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
         elif command == 5:
             student_id = input("수정할 학생의 학번을 입력해주세요: ")
             while True:  # 입력한 학번이 존재하는지 검사
-                existing_student = manager.search_student(student_id)
-                if existing_student:
+                existing_id = manager.search_student(student_id)
+                if existing_id:
                     new_student_id = input("새로운 학번을 입력해주세요: ")
                     if manager.search_student(new_student_id):
                         print(f"{new_student_id} 학번은 이미 존재합니다. 다른 학번을 입력해주세요.")
@@ -167,7 +168,8 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
                         print(f"{name} 학생 정보가 수정되었습니다.")
                         break
                 else:
-                    student_id = input("존재하지 않는 학번입니다. 수정할 학생의 학번을 다시 입력해주세요: ")
+                    print("존재하지 않는 학번입니다.")
+                    break
 
         elif command == 6:
             print("학생 관리 프로그램을 종료합니다.")
