@@ -58,7 +58,8 @@ class StudentManagerImpl(StudentManagerRepo):  # 학생 정보를 관리하는 �
         self.__students.append(student)
 
     def list_student(self):
-        return self.__students
+        sorted_students = sorted(self.__students, key=lambda x: x.get_grade(), reverse=True)
+        return sorted_students  # 학점에 따라 학생을 정렬하는 기능을 추가함
 
     def search_student(self, student_id):
         result = []
@@ -128,7 +129,7 @@ def main(manager):  # manager: StudentManagerImpl 클래스의 객체
             else:
                 print("<<전체 학생 리스트>>")
                 for student in students:
-                    print(f"이름: {student.get_name()}")
+                    print(f"이름: {student.get_name()}, 학점: {student.get_grade()}")  # 학점에 따라 정렬이 되는지 확인
 
         elif command == 3:
             student_id = input("조회할 학생의 학번을 입력해주세요: ")
