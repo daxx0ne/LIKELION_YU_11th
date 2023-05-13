@@ -25,7 +25,7 @@ Reviewer:
     - auto_now=True로 지정하여 자동으로 수정 시간을 저장
   - `author`: 해당 블로그 작성자를 나타내는 ForeignKey (User 모델과의 연결)
     - on_delete 옵션으로 CASCADE를 사용하여, User 모델과 연결된 Blog가 삭제되면 해당 User 모델의 데이터도 함께 삭제
-  - available_blogs: 한 계정이 만들 수 있는 최대 블로그의 개수를 나타내는 PositiveIntegerField (양수값만 저장 가능 / 기본값 1, 최대값 3)
+  - `available_blogs`: 한 계정이 만들 수 있는 최대 블로그의 개수를 나타내는 PositiveIntegerField (양수값만 저장 가능 / 기본값 1, 최대값 3)
     - validators = [MaxValueValidator(3)] -> 유효성 검사기를 통해 해당 필드의 값이 최대값(3)을 초과하지 않도록 제한
 
 
