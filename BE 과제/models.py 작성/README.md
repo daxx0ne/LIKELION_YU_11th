@@ -2,9 +2,20 @@
 
 ### 💻 CODE REVIEW
 
-Reviewer: 
+Reviewer: 이진우
 
-1. 
+1. **date_created, date_modified**
+    - 생성 및 수정 칼럼의 일반적인 컨벤션은 created_at, updated_at을 사용함
+    (참고 : MySQL 컨벤션 [https://velog.io/@peppermint100/MySQL-Naming-Convention-번역](https://velog.io/@peppermint100/MySQL-Naming-Convention-%EB%B2%88%EC%97%AD))
+2. **post 테이블에 author가 있어야 하는가?**
+    - 블로그는 일반적으로 블로그 주인만 게시글 생성이 가능함
+    - 그렇기 때문에 post 테이블에 author 컬럼이 있어야 할까요?
+3. **post 테이블에 FK default가 1이어야 하는가?**
+    - author default를 null로 두는 것이 더 좋을 것 같음
+4. **Post 테이블의 tag 컬럼의 관계 변경?**
+    - "다대다 관계는 “미완성된 모델링”이라 간주하며 중재 테이블을 놓아 다대다 관계를 회피하는 것이 좋다." 라고 교육 자료에 있어서 다대다를 없애고 PostTag 혹은 post_tag 테이블을 만드는게 좋지 않을까?
+5. **Post 테이블에 조회 수 컬럼 추가**
+    - 게시글의 경우 조회수가 출력되는 경우도 있으므로 만들어봐도 좋을 것 같음
 
 ---
 ### ⬇️ 실행 결과
