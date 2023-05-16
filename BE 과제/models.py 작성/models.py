@@ -5,26 +5,25 @@ from django.contrib.auth.models import User
 
 # 블로그의 정보를 나타내는 모델
 class Blog(models.Model):
-    title = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
     description = models.CharField(max_length=100, null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    available_blogs = models.PositiveIntegerField(default=1, validators=[MaxValueValidator(3)])
+    available_blogs = models.PositiveIntegerField(validators=[MaxValueValidator(3)])
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 # 게시글의 정보를 나타내는 모델
 class Post(models.Model):
     title = models.CharField(max_length=30)
     body = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, default=1)
-    tags = models.ManyToManyField('Tag')
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    views = models.IntegerField(default=0)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -33,10 +32,10 @@ class Post(models.Model):
 # 댓글의 정보를 나타내는 모델
 class Comment(models.Model):
     comment = models.CharField(max_length=100)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment
@@ -78,3 +77,12 @@ class Subscription(models.Model):
 
     def __str__(self):
         return f"{self.user.username} subscribed to {self.blog.title}"
+
+
+# Post와 Tag 모델을 Many-to-Many 관계로 연결하는 역할을 하는 모델 (중재 테이블)
+class PostTag(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Post: {self.post} | Tag: {self.tag}"
