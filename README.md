@@ -11,3 +11,4 @@
 **BE 과제**
 - [x] 학생 관리 프로그램 구현하기
 - [x] models.py 작성하기
+- [ ] View & Test case 작성하기
