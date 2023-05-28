@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>홈 페이지</h2>
+  {% if posts %}
+    <ul>
+      {% for post in posts %}
+        <li>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.body }}</p>
+          <p>작성자: {{ post.author }}</p>
+          <p>작성일: {{ post.created_at }}</p>
+          <p>조회수: {{ post.views }}</p>
+          <a href="{% url 'post_detail' pk=post.pk %}">자세히 보기</a>
+          <a href="{% url 'post_update' pk=post.pk %}">수정</a>
+          <a href="{% url 'post_delete' pk=post.pk %}">삭제</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>등록된 게시글이 없습니다.</p>
+  {% endif %}
+{% endblock %}

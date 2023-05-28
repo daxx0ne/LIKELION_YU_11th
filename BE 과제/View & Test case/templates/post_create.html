@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>새로운 게시글 생성</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.title.label }}<br>
+    {{ form.title }}<br>
+    {{ form.body.label }}<br>
+    {{ form.body }}<br>
+    <button type="submit">저장</button>
+  </form>
+{% endblock %}

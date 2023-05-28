@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+  <p>작성자: {{ post.blog.author.username }}</p>
+  <p>작성일: {{ post.created_at }}</p>
+  <p>조회수: {{ post.views }}</p>
+
+  <h3>댓글</h3>
+  {% for comment in post.comment_set.all %}
+    <div>
+      <p>{{ comment.comment }}</p>
+      <p>작성자: {{ comment.author.username }}</p>
+      <p>작성일: {{ comment.created_at }}</p>
+    </div>
+    <hr>
+  {% empty %}
+    <p>댓글이 없습니다.</p>
+  {% endfor %}
+{% endblock %}
